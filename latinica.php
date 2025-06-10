@@ -38,38 +38,38 @@ $output = $input !== '' ? replaceAndHighlight($input) : '';
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Кирилиця → Латиниця з підсвічуванням</title>
-    <style>
-        body { font-family: sans-serif; margin: 2em; }
-        textarea { width: 100%; height: 150px; font-size: 1rem; }
-        .result {
-            background: #f7f7f7;
-            padding: 1em;
-            margin-top: 1em;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            border: 1px solid #ccc;
-        }
-        .highlight {
-            background-color: yellow;
-            font-weight: bold;
-        }
-        button {
-            padding: 0.5em 1em;
-            font-size: 1rem;
-        }
-    </style>
+
+    <title>Anti-AI</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 <body>
 <form method="post">
-
-    <textarea id="text" name="text" placeholder="Тут ваш текст…"><?= htmlspecialchars($input, ENT_QUOTES, 'UTF-8') ?></textarea><br><br>
-    <button type="submit">go</button>
+    <button type="button" id="fileButton" class="btn btn-secondary mb-3">
+        <i class="bi bi-file-earmark-text"></i>
+    </button>
+    <input type="file" id="fileInput" accept=".txt" style="display:none;">
+    <textarea class="text_area_input" id="text" name="text" placeholder="Введіть текст"><?= htmlspecialchars($input, ENT_QUOTES, 'UTF-8') ?></textarea><br><br>
+    <button type="submit" class="btn btn-success">Переписати</button>
 </form>
 
 <?php if ($output !== ''): ?>
-    <h2>Результат:</h2>
+    <h2 class="color_result">Результат:</h2>
     <div class="result"><?= $output ?></div>
 <?php endif; ?>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YYYYY"
+        crossorigin="anonymous">
+</script>
+<script src="js/home.js"></script>
+<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
+
+<script src="js/fileUpload.js"></script>
+<link rel="stylesheet" href="css/home.css">
 </body>
 </html>
